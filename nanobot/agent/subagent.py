@@ -20,7 +20,7 @@ from nanobot.providers.base import LLMProvider
 class SubagentManager:
     """
     Manages background subagent execution.
-    
+
     Subagents are lightweight agent instances that run in the background
     to handle specific tasks. They share the same LLM provider but have
     isolated context and a focused system prompt.
@@ -55,13 +55,13 @@ class SubagentManager:
     ) -> str:
         """
         Spawn a subagent to execute a task in the background.
-        
+
         Args:
             task: The task description for the subagent.
             label: Optional human-readable label for the task.
             origin_channel: The channel to announce results to.
             origin_chat_id: The chat ID to announce results to.
-        
+
         Returns:
             Status message indicating the subagent was started.
         """

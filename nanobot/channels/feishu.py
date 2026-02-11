@@ -42,9 +42,9 @@ MSG_TYPE_MAP = {
 class FeishuChannel(BaseChannel):
     """
     Feishu/Lark channel using WebSocket long connection.
-    
+
     Uses WebSocket to receive events - no public IP or webhook required.
-    
+
     Requires:
     - App ID and App Secret from Feishu Open Platform
     - Bot capability enabled
@@ -148,7 +148,7 @@ class FeishuChannel(BaseChannel):
     async def _add_reaction(self, message_id: str, emoji_type: str = "THUMBSUP") -> None:
         """
         Add a reaction emoji to a message (non-blocking).
-        
+
         Common emoji types: THUMBSUP, OK, EYES, DONE, OnIt, HEART
         """
         if not self._client or not Emoji:
@@ -169,7 +169,8 @@ class FeishuChannel(BaseChannel):
         lines = [l.strip() for l in table_text.strip().split("\n") if l.strip()]
         if len(lines) < 3:
             return None
-        split = lambda l: [c.strip() for c in l.strip("|").split("|")]
+        def split(l):
+            return [c.strip() for c in l.strip("|").split("|")]
         headers = split(lines[0])
         rows = [split(l) for l in lines[2:]]
         columns = [{"tag": "column", "name": f"c{i}", "display_name": h, "width": "auto"}
